@@ -1,15 +1,40 @@
 //Sons de con
 const clickSound = new Audio('sons/countryDuTexas.mp3');
+
+//préloads
 const endSound = new Audio('sons/fin.mp3');
 clickSound.preload = "auto";
 clickSound.load();
+
+const imagesToPreload = [
+  "images/cat1.jpg",
+  "images/cat2.jpg",
+  "images/cat3.jpg",
+  "images/Théotim.jpg",
+  "images/Antonin.jpg",
+  "images/Noé.jpg",
+  "images/Lého.jpg",
+  "images/Guillaume O.jpg",
+  "images/Lucas.jpg",
+  "images/Inès.jpg",
+  "images/Lalie.jpg",
+  "images/Guillaume D.jpg",
+];
+
+function preloadImages(list){
+  list.forEach(src => {
+    imagesToPreload.src = src;
+  })
+}
+
+preloadImages(imagesToPreload)
 
 const participants = ["Théotim", "Antonin", "Noé", "Lého", "Guillaume O", "Lucas", "Inès", "Lalie", "Guillaume D"];
 
 const messagesPerso = {
   "Théotim": "Choisis sagement son cadeau, mais petite indication : il n'a pas besoin de peigne ni de gel...",
   "Antonin": "J'espère que ton cadeau lui plaira sinon gare à toi, son coup de front fait des ravages",
-  "Noé": "Offre lui un joli cadeau il le mérite, regarde comme il est beau avec ses tresses (l pense ressembler à Gazo mais il ressemble à M2LT)",
+  "Noé": "Offre lui un joli cadeau il le mérite, regarde comme il est beau avec ses tresses (il pense ressembler à Gazo mais il ressemble à M2LT)",
   "Lého": "Il a déjà eu la chance de rencontrer Chap dans la vraie vie !!!!! J'espère que ton cadeau saura lui procurer autant de bonheur",
   "Guillaume O": "Regarde comme il est séduisant, à ta place je choisirais attentivement son cadeau pour avoir une chance avec lui",
   "Lucas": "Choisis bien son cadeau ou tu devras affronter son regard...",
