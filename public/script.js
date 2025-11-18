@@ -21,7 +21,7 @@ const messagesPerso = {
 
 //Lien backend frontend
 let pairs = {};
-fetch('http://localhost:3000/pairs')
+fetch('/pairs')
   .then(res => res.json())
   .then(data => {
     pairs = data.pairs;
