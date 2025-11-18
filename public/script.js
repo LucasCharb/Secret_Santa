@@ -8,26 +8,38 @@ clickSound.load();
 
 const imagesToPreload = [
   "images/cat1.jpg",
-  "images/cat2.jpg",
+  "images/cat2.gif",
   "images/cat3.jpg",
   "images/Théotim.jpg",
   "images/Antonin.jpg",
   "images/Noé.jpg",
   "images/Lého.jpg",
   "images/Guillaume O.jpg",
-  "images/Lucas.jpg",
-  "images/Inès.jpg",
-  "images/Lalie.jpg",
   "images/Guillaume D.jpg",
+  "images/Lucas.jpg",
+  "images/Lalie.jpg",
+  "images/Inès.jpg"
 ];
 
-function preloadImages(list){
-  list.forEach(src => {
-    imagesToPreload.src = src;
-  })
+// Fonction de préchargement sûre 100%
+function preloadImages(imagePaths) {
+  return Promise.all(
+    imagePaths.map(src => {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve({ src, status: "ok" });
+        img.onerror = () => resolve({ src, status: "error" });
+        img.src = src;
+      });
+    })
+  );
 }
 
-preloadImages(imagesToPreload)
+// On lance le préchargement dès le chargement du site
+preloadImages(imagesToPreload).then(results => {
+  console.log("Toutes les images sont préchargées :", results);
+  window.imagesReady = true; // utile si tu veux empêcher le lancement avant chargement
+});
 
 const participants = ["Théotim", "Antonin", "Noé", "Lého", "Guillaume O", "Lucas", "Inès", "Lalie", "Guillaume D"];
 
@@ -171,11 +183,11 @@ document.getElementById("btnReveal").addEventListener("click", () => {
   const msg11 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Antonin.jpg' width='200'>", 20300);
   const msg12 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lého.jpg' width='200'>", 20600);
   const msg13 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Inès.jpg' width='200'>", 20900);
-  const msg14 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Guillaume D.jpg' width='200'>", 21200);
+  const msg14 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Guillaume O.jpg' width='200'>", 21200);
   const msg15 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lucas.jpg' width='200'>", 21500);
   const msg16 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Noé.jpg' width='200'>", 21800);
   const msg17 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lalie.jpg' width='200'>", 22100);
-  const msg18 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Guillaume O.jpg' width='200'>", 22400);
+  const msg18 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Guillaume D.jpg' width='200'>", 22400);
   const msg19 = setTimeout(()=>resultDiv.textContent="Le suspens est insoutenable...", 22700);
 
 

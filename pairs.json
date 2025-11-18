@@ -1,13 +1,13 @@
 {
   "pairs": {
-    "Lalie": "Guillaume D",
-    "Guillaume D": "Théotim",
-    "Théotim": "Lého",
-    "Lého": "Antonin",
-    "Antonin": "Guillaume O",
-    "Guillaume O": "Inès",
-    "Inès": "Lucas",
-    "Lucas": "Noé",
-    "Noé": "Lalie"
+    "Lého": "Lalie",
+    "Lalie": "Antonin",
+    "Antonin": "Noé",
+    "Noé": "Inès",
+    "Inès": "Théotim",
+    "Théotim": "Lucas",
+    "Lucas": "Guillaume D",
+    "Guillaume D": "Guillaume O",
+    "Guillaume O": "Lého"
   }
 }
