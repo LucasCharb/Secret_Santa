@@ -6,6 +6,7 @@ const endSound = new Audio('sons/fin.mp3');
 clickSound.preload = "auto";
 clickSound.load();
 
+
 const imagesToPreload = [
   "images/cat1.jpg",
   "images/cat2.gif",
@@ -51,8 +52,8 @@ const messagesPerso = {
   "Lého": "Il a déjà eu la chance de rencontrer Chap dans la vraie vie !!!!! J'espère que ton cadeau saura lui procurer autant de bonheur",
   "Guillaume O": "Regarde comme il est séduisant, à ta place je choisirais attentivement son cadeau pour avoir une chance avec lui",
   "Lucas": "Choisis bien son cadeau ou tu devras affronter son regard...",
-  "Inès": "Un cadeau tout en douceur, comme toi.",
-  "Lalie": "",
+  "Inès": "Regarde ce grand sourire, j'espère que ton cadeau saura lui procurer autant d'émotions",
+  "Lalie": "Mdr tu dois offrir un cadeau à Sid de l'âge de glace ou quoi ? Je crois qu'il aime bien les pissenlits dans le film",
   "Guillaume D": "J'espère que ton cadeau saura autant le décoiffer que ce jour là, (il se pensait séduisant, il ressemble juste à Sonic)"
 };
 
@@ -236,4 +237,14 @@ document.getElementById("btnReveal").addEventListener("click", () => {
     message.classList.add("result-message");
     resultDiv.appendChild(message);
   });
+});
+
+
+
+//Bouton bonus
+const btnMusic = document.getElementById("shimmy");
+const secretAudio = document.getElementById("shimmySong");
+
+btnMusic.addEventListener("click", () => {
+    secretAudio.play();
 });
