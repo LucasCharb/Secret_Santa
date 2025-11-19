@@ -182,15 +182,15 @@ document.getElementById("btnReveal").addEventListener("click", () => {
   const msg8 = setTimeout(() => resultDiv.innerHTML = "<img src='images/cat3.jpg' width='200'>", 16000);
   const msg9 = setTimeout(()=>resultDiv.textContent="Sur qui vas tu tomber ???", 18000);
   const msg10 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Théotim.jpg' width='200'>", 20000);
-  const msg11 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Antonin.jpg' width='200'>", 20300);
-  const msg12 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lého.jpg' width='200'>", 20600);
-  const msg13 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Inès.jpg' width='200'>", 20900);
-  const msg14 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Guillaume O.jpg' width='200'>", 21200);
-  const msg15 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lucas.jpg' width='200'>", 21500);
-  const msg16 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Noé.jpg' width='200'>", 21800);
-  const msg17 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lalie.jpg' width='200'>", 22100);
-  const msg18 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Guillaume D.jpg' width='200'>", 22400);
-  const msg19 = setTimeout(()=>resultDiv.textContent="Le suspens est insoutenable...", 22700);
+  const msg11 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Antonin.jpg' width='200'>", 20400);
+  const msg12 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lého.jpg' width='200'>", 20800);
+  const msg13 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Inès.jpg' width='200'>", 21200);
+  const msg14 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Guillaume O.jpg' width='200'>", 21600);
+  const msg15 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lucas.jpg' width='200'>", 22000);
+  const msg16 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Noé.jpg' width='200'>", 22400);
+  const msg17 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Lalie.jpg' width='200'>", 22800);
+  const msg18 = setTimeout(() => resultDiv.innerHTML = "<img src='images/Guillaume D.jpg' width='200'>", 23200);
+  const msg19 = setTimeout(()=>resultDiv.textContent="Le suspens est insoutenable...", 23600);
 
 
 
