@@ -1,13 +1,12 @@
+//App settings
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
 const PORT = 3000;
 
 //La Tchim
@@ -15,16 +14,24 @@ const participants = ["Théotim", "Antonin", "Noé", "Lého", "Guillaume O", "Lu
 
 //Génération paires
 function generatePairs(names) {
+  //Meilleur shuffle de la vie
   const shuffled = [...names];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
+  //Formations des paires
   const pairs = {};
   for (let i = 0; i < shuffled.length; i++) {
-    const j = (i === shuffled.length - 1) ? 0 : i + 1;
-    pairs[shuffled[i]] = shuffled[j];
+    let next;
+    if (i === shuffled.length-1){
+      next = shuffled[0];
+    }
+    else{
+      next = shuffled[i+1];
+    }
+    pairs[shuffled[i]] = next;
   }
   return pairs;
 }
@@ -48,4 +55,4 @@ app.post('/admin/shuffle', (req, res) => {
   res.json({ success: true, pairs });
 });
 
-app.listen(PORT, () => console.log(`Serveur lancé sur http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Serveur lancé`));

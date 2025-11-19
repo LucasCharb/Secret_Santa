@@ -24,6 +24,13 @@ p {
   text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* fort contraste */
 }
 
+.p2 {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #fc04a9;                     /* jaune vif */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* fort contraste */
+}
+
 button {
   background: #27ae60;
   color: white;

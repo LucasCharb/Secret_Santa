@@ -21,7 +21,7 @@ const imagesToPreload = [
   "images/Inès.jpg"
 ];
 
-// Fonction de préchargement sûre 100%
+//Fct préload
 function preloadImages(imagePaths) {
   return Promise.all(
     imagePaths.map(src => {
@@ -35,12 +35,13 @@ function preloadImages(imagePaths) {
   );
 }
 
-// On lance le préchargement dès le chargement du site
+//On lance le préload dès le chargement du site
 preloadImages(imagesToPreload).then(results => {
   console.log("Toutes les images sont préchargées :", results);
-  window.imagesReady = true; // utile si tu veux empêcher le lancement avant chargement
+  window.imagesReady = true;
 });
 
+//La tchim
 const participants = ["Théotim", "Antonin", "Noé", "Lého", "Guillaume O", "Lucas", "Inès", "Lalie", "Guillaume D"];
 
 const messagesPerso = {
