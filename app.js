@@ -7,52 +7,54 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 //La Tchim
 const participants = ["Théotim", "Antonin", "Noé", "Lého", "Guillaume O", "Lucas", "Inès", "Lalie", "Guillaume D"];
 
+// 📌 Emplacement persistant sur Render
+const DATA_FILE = path.join('/tmp', 'pairs.json');
+
 //Génération paires
 function generatePairs(names) {
-  //Meilleur shuffle de la vie
   const shuffled = [...names];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
-  //Formations des paires
   const pairs = {};
   for (let i = 0; i < shuffled.length; i++) {
-    let next;
-    if (i === shuffled.length-1){
-      next = shuffled[0];
-    }
-    else{
-      next = shuffled[i+1];
-    }
+    let next = (i === shuffled.length - 1) ? shuffled[0] : shuffled[i + 1];
     pairs[shuffled[i]] = next;
   }
   return pairs;
 }
 
-// Génération initiale au démarrage et sauvegarde dans pairs.json
-let pairs = generatePairs(participants);
-fs.writeFileSync('pairs.json', JSON.stringify({ pairs }, null, 2));
-console.log("Paires initiales générées youpi");
+// 🔥 Chargement ou création des paires (sans auto-regénération !)
+let pairs = {};
 
-//GET
+if (fs.existsSync(DATA_FILE)) {
+  console.log("pairs.json trouvé → chargement des paires existantes");
+  pairs = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')).pairs;
+} else {
+  console.log("pairs.json absent → génération initiale et création");
+  pairs = generatePairs(participants);
+  fs.writeFileSync(DATA_FILE, JSON.stringify({ pairs }, null, 2));
+}
+
+//GET - utilisé par le front
 app.get('/pairs', (req, res) => {
-  const data = JSON.parse(fs.readFileSync('pairs.json', 'utf8'));
-  res.json(data);
+  res.json({ pairs });
 });
 
-//Générer à nouveau le tirage (utiliser ssi problème)
+//ADMIN - régénérer les paires manuellement
 app.post('/admin/shuffle', (req, res) => {
   const newParticipants = req.body.participants || participants;
   pairs = generatePairs(newParticipants);
-  fs.writeFileSync('pairs.json', JSON.stringify({ pairs }, null, 2));
+  fs.writeFileSync(DATA_FILE, JSON.stringify({ pairs }, null, 2));
+  console.log("Nouvelles paires générées via /admin/shuffle");
   res.json({ success: true, pairs });
 });
 
-app.listen(PORT, () => console.log(`Serveur lancé`));
+app.listen(PORT, () => console.log(`Serveur lancé sur port ${PORT}`));
