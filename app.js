@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 //La Tchim
 const participants = ["Théotim", "Antonin", "Noé", "Lého", "Guillaume O", "Lucas", "Inès", "Lalie", "Guillaume D"];
 
-// 📌 Emplacement persistant sur Render
+// 📌 Emplacement persistant sur Render ok
 const DATA_FILE = path.join('/tmp', 'pairs.json');
 
 //Génération paires
