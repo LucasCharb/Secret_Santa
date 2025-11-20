@@ -1,6 +1,5 @@
-// app.js
 const express = require('express');
-require('dotenv').config();  // ⚠️ Il manquait les parenthèses
+require('dotenv').config(); 
 const cors = require('cors');
 const { Pool } = require('pg');
 const app = express();
@@ -11,25 +10,26 @@ app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3000;
 
-// Connexion PostgreSQL via Render (ou variable d'environnement)
+// Connexion PostgreSQL via Render
 const pool = new Pool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  ssl: { rejectUnauthorized: false } // Render exige SSL
+  ssl: { rejectUnauthorized: false }
 });
 
-// Participants fixes
+//Tchim
 const participants = [
   "Théotim", "Antonin", "Noé", "Lého", 
   "Guillaume O", "Lucas", "Inès", "Lalie", "Guillaume D"
 ];
 
-// Fonction pour générer les paires aléatoires
+//Paires aléatoires
 function generatePairs(names) {
   const shuffled = [...names];
+  //Meilleur shuffle de la vie
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -67,7 +67,7 @@ async function initDB() {
   }
 }
 
-// Endpoint pour récupérer les paires
+//Endpoint pour récupérer les paires
 app.get('/pairs', async (req, res) => {
   try {
     const result = await pool.query('SELECT participant, target FROM pairs');
@@ -80,7 +80,7 @@ app.get('/pairs', async (req, res) => {
   }
 });
 
-// Endpoint admin pour régénérer les paires
+//Endpoint admin pour régénérer les paires
 app.post('/admin/shuffle', async (req, res) => {
   try {
     const newPairs = generatePairs(participants);
@@ -98,7 +98,7 @@ app.post('/admin/shuffle', async (req, res) => {
   }
 });
 
-// Démarrage du serveur
+//Démarrage du serveur
 initDB()
   .then(() => {
     app.listen(PORT, () => console.log(`Serveur lancé sur port ${PORT}`));
