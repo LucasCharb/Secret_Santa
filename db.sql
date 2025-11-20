@@ -1,0 +1,5 @@
+CREATE TABLE pairs (
+    id SERIAL PRIMARY KEY,
+    data JSONB NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
